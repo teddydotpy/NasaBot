@@ -23,6 +23,8 @@ auth=tweepy.OAuthHandler(consumer_key,consumer_secret_key)
 auth.set_access_token(access_token,access_secret)
 api=tweepy.API(auth)
 
+api.update_status('This is working :)')
+
 while(True):
     if datetime.datetime.now().time().hour == 10 and not ifApodSent:
         Apod.TwitterSend(api)
@@ -30,7 +32,6 @@ while(True):
         print('The message was sent at ' + str(datetime.datetime.now()))
     elif datetime.datetime.now().time().hour == random.randrange(23):
         api.update_status(get_random_message())
-
 
     # Making sure that everythin works at the proper times of day regardless
     # of the time it was started. Pretty neat.   
