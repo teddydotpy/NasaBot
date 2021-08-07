@@ -1,2 +1,2 @@
-worker: python3 DiscordBot.py
-worker: python3 twitterbot.py
+Discord: python3 DiscordBot.py
+Twitter: python3 twitterbot.py
