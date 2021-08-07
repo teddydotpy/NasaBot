@@ -21,8 +21,8 @@ class Apod:
     
     def TwitterSend(self, api):
         data = self.SingleApod()
-        title = 'title: ' + data['title'] + '\n'
-        description = 'Description: ' + data['explanation'][:20] + '...' + '\n'
+        title = 'Title: ' + data['title'] + '\n'
+        description = 'Description: ' + data['explanation'][:50] + '...' + '\n'
         url = 'url:' + str(data['url'])
         image = data['hdurl']
         message = title + description + url

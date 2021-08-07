@@ -23,8 +23,6 @@ auth=tweepy.OAuthHandler(consumer_key,consumer_secret_key)
 auth.set_access_token(access_token,access_secret)
 api=tweepy.API(auth)
 
-Apod.TwitterSend(api)
-
 while(True):
     if datetime.datetime.now().time().hour == 10 and not ifApodSent:
         Apod.TwitterSend(api)
