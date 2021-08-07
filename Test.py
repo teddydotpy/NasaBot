@@ -1,4 +1,5 @@
 #! /usr/bin/env python3
 
-message = list(open('Messagelist.txt', 'r'))
-print(message)
+from datetime import datetime
+
+print(datetime.today().day)
