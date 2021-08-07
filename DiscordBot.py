@@ -19,6 +19,7 @@ while(True):
         message = Apod.DiscordSend()
         webhook.send(message)
         ifApodSent = True
+        print('Posted the image at ' + str(datetime.datetime.now()))
     elif datetime.datetime.now().time().hour == random.randrange(23):
         webhook.send(get_random_message())
 

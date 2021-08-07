@@ -1,6 +1,7 @@
 import requests, json, os
 env = os.environ
-# This apbstracts away the specific getting of the nasa data stuff.
+
+# This abstracts away the specific getting of the nasa data stuff.
 class ApiRequester:
     def __init__(self):
         self.ApiKey = env['NasaAPI_key']

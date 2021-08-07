@@ -1,4 +1,4 @@
-import Api, json
+import Api, json, requests, os
 
 class Apod:
     def __init__(self):
@@ -18,6 +18,30 @@ class Apod:
         description = data['explanation']
         image = data['hdurl']
         return 'Title: ' + title + '\n' + 'Description: ' + description + '\n' + image
+    
+    def TwitterSend(self, api):
+        data = self.SingleApod()
+        title = 'title: ' + data['title'] + '\n'
+        description = 'Description: ' + data['explanation'][:20] + '...' + '\n'
+        url = 'url:' + str(data['url'])
+        image = data['hdurl']
+        message = title + description + url
+
+        api = api
+        filename = 'temp.jpg'
+        request = requests.get(url, stream=True)
+        if request.status_code == 200:
+            with open(filename, 'wb') as image:
+                for chunk in request:
+                    image.write(chunk)
+
+            api.update_with_media(filename, status=message)
+            os.remove(filename)
+            return 
+        else:
+            print("Unable to download image")
+            return message
+    
 
     def MassApods(self, start, end):
         Apods = self.ManyApod(start, end)
