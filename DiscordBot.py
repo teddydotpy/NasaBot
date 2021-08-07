@@ -5,7 +5,6 @@ from discord import Webhook, RequestsWebhookAdapter
 
 env = os.environ
 Apod = GetApod.Apod()
-message = Apod.DiscordSend()
 ifApodSent = False
 Today = datetime.datetime.today().day
 # manyMessages = Apod.MassApods('2020-08-09', '2020-09-15')
@@ -17,6 +16,7 @@ def get_random_message():
 
 while(True):
     if datetime.datetime.now().time().hour == 10 and not ifApodSent:
+        message = Apod.DiscordSend()
         webhook.send(message)
         ifApodSent = True
     elif datetime.datetime.now().time().hour == random.randrange(23):
