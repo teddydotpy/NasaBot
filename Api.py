@@ -9,6 +9,7 @@ class ApiRequester:
     def ApiGet(self, website):
         data = requests.get(website + self.ApiKey)
         self.head = data.headers
+        print(data.headers)
         return data.text
 
     def ReturnHead(self):
