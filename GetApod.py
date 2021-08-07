@@ -23,7 +23,7 @@ class Apod:
         data = self.SingleApod()
         title = 'title: ' + data['title'] + '\n'
         description = 'Description: ' + data['explanation'][:20] + '...' + '\n'
-        url = 'url:' + str(data['url'])
+        url = data['url']
         image = data['hdurl']
         message = title + description + url
 
