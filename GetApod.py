@@ -23,13 +23,13 @@ class Apod:
         data = self.SingleApod()
         title = 'title: ' + data['title'] + '\n'
         description = 'Description: ' + data['explanation'][:20] + '...' + '\n'
-        url = data['url']
+        url = 'url:' + str(data['url'])
         image = data['hdurl']
         message = title + description + url
 
         api = api
         filename = 'temp.jpg'
-        request = requests.get(url, stream=True)
+        request = requests.get(image, stream=True)
         if request.status_code == 200:
             with open(filename, 'wb') as image:
                 for chunk in request:
