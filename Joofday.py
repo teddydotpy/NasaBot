@@ -9,7 +9,7 @@ class Joofday:
 
     def TwitterSend(self, api):
         data = self.req.text
-        message = 'Joke of the day: \n' + data.text['joke']
+        message = 'Joke of the day: \n' + data['joke']
         api = api
         
         api.update_status(message)
