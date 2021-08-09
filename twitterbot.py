@@ -29,7 +29,7 @@ while(True):
         ifApodSent = True
         print('The message was sent at ' + str(datetime.datetime.now()))
     elif datetime.datetime.now().time().hour == random.randrange(23):
-        api.update_status(get_random_message())
+        api.update_status(get_random_message()) 
 
     # Making sure that everythin works at the proper times of day regardless
     # of the time it was started. Pretty neat.   
