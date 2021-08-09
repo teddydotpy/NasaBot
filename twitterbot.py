@@ -1,10 +1,11 @@
 #! /usr/bin/env python3
-import GetApod
+import GetApod, Joofday
 import requests, datetime, time, random, os
 import tweepy
 
 env = os.environ
 Apod = GetApod.Apod()
+Joofday = Joofday.Joofday()
 ifApodSent = False
 Today = datetime.datetime.today().day
 
@@ -30,6 +31,9 @@ while(True):
         print('The message was sent at ' + str(datetime.datetime.now()))
     elif datetime.datetime.now().time().hour == random.randrange(23):
         api.update_status(get_random_message()) 
+    elif datetime.datetime.now().time().hour == 16:
+        Joofday.TwitterSend(api)
+
 
     # Making sure that everythin works at the proper times of day regardless
     # of the time it was started. Pretty neat.   
