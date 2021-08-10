@@ -1,4 +1,4 @@
-import requests
+import requests, json
 
 class Joofday:
     def __init__(self):
@@ -8,7 +8,7 @@ class Joofday:
 
 
     def TwitterSend(self, api):
-        data = self.req.text
+        data = json.loads(self.req.text)
         message = 'Joke of the day: \n' + data['joke']
         api = api
         

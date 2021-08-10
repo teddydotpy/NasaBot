@@ -1,10 +1,10 @@
 #! /usr/bin/env python3
 import GetApod
-import requests
+import requests, json
 
 url = 'https://icanhazdadjoke.com/'
 headers = {'Accept': 'application/json'}
-req = requests.get(url, headers=headers)
+req = json.loads(requests.get(url, headers=headers).text)
 
 
-print(req.text)
+print(req['joke'])
