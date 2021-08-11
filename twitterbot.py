@@ -6,8 +6,10 @@ import tweepy
 env = os.environ
 Apod = GetApod.Apod()
 Joofday = Joofday.Joofday()
-ifApodSent = False
 Today = datetime.datetime.today().day
+
+ifApodSent = False
+ifJokeSent = False
 
 #variables for accessing twitter API
 consumer_key = env['twitter_key']
@@ -31,8 +33,9 @@ while(True):
         print('The message was sent at ' + str(datetime.datetime.now()))
     elif datetime.datetime.now().time().hour == random.randrange(23):
         api.update_status(get_random_message()) 
-    elif datetime.datetime.now().time().hour == 16:
+    elif datetime.datetime.now().time().hour == 16 and not ifJokeSent:
         Joofday.TwitterSend(api)
+        ifJokeSent = True
 
 
     # Making sure that everythin works at the proper times of day regardless
@@ -41,3 +44,4 @@ while(True):
     if Today != datetime.datetime.today().day:
         Today = datetime.datetime.today().day
         ifApodSent = False
+        ifJokeSent = False
