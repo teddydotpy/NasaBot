@@ -24,7 +24,7 @@ class Apod:
         title = 'Title: ' + data['title'] + '\n'
         description = 'Description: ' + data['explanation'][:50] + '...' + '\n'
         url = 'url:' + str(data['url'])
-        image = data['hdurl']
+        image = data['url']
         message = title + description + url
 
         api = api
