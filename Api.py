@@ -4,7 +4,7 @@ env = os.environ
 # This abstracts away the specific getting of the nasa data stuff.
 class ApiRequester:
     def __init__(self):
-        self.ApiKey = env['NasaAPI_key']
+        self.ApiKey = env.get('NasaAPI_key')
         self.head = ''
 
     def ApiGet(self, website):
